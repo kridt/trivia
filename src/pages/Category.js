@@ -5,7 +5,7 @@ import { Link } from "@reach/router";
 export default function Category() {
     var [categories, setCategories] = useState({});
     
-    
+    var score = localStorage.getItem("currentScore");
 
     useEffect(
         function () {
@@ -23,6 +23,7 @@ export default function Category() {
     return(
         <>
         <h1>Choose a category</h1>
+        <h2>Your current score: {score}</h2>
         <ul className="categoriesList">
         
         {categories.trivia_categories?.map(function (category) {
@@ -39,4 +40,5 @@ export default function Category() {
 
 
 )
+
 }

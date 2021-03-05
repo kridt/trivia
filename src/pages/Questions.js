@@ -1,10 +1,14 @@
 /* import { Link } from "@reach/router"; */
+import { Link } from "@reach/router";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Questions(props) {
-    
+
+    var score = localStorage.getItem("currentScore");
     var [question, setQuestion] = useState({});
+    
+    localStorage.setItem("categoryId", props.id)
     
     useEffect(
         function () {
@@ -14,38 +18,46 @@ export default function Questions(props) {
         },
         [setQuestion, props.id]
         ) 
+
+        var correctQuestionFormat = question[0]?.question.replaceAll("&quot;", `"`).replaceAll("&#039;", "'").replaceAll("&rsquo;", "’")
         
-        /* var displayQuestion = document.querySelector(".theQuestion"); */
         var theQuestion = question[0];
         
-        
-        
-        
-        //var correctAnswer = theQuestion?.correct_answer;
+        var correctAnswer = theQuestion?.correct_answer;
         var incorrectAnswers = theQuestion?.incorrect_answers;
-        console.log(incorrectAnswers);
-             //incorrectAnswers?.push(correctAnswer);
-             //var options = incorrectAnswers;
-              
-                
-    return(
-        <>
+        
+        
+        var options = incorrectAnswers?.concat(correctAnswer);
+        
+        options?.sort(function (a, b){ return 0.2 - Math.random() })
+        
+        var shuffle1 = options?.sort(function (a, b){ return 0.2 - Math.random() })
+        var shuffle2 = options?.sort(function (a, b){ return 0.5 - Math.random() })
+        var shuffleMethod = [shuffle1, shuffle2];
+        
+        Math.floor(Math.random() * shuffleMethod.length);
+        
+        
+
+        console.log(`%c ${correctAnswer}`, 'color: #bada55'); 
+        localStorage.setItem("answer", correctAnswer);
+        return(
+            <>
         <h1>{question[0]?.category}</h1>
 
-        <p className="theQuestion"></p>
+        <p className="theQuestion">{correctQuestionFormat}</p>
         
-        <ul>
-             {/* {answerOptions?.map(function (result) {
-                console.log(result);
+        
+              {options?.map(function(result) {
+                  return(
+                      <Link style={{display: "block"}} to={"/result/" + result} key={result}>{result}</Link>
 
-                return(
-                    <li>{result}</li>
-                )
-            })}  */}
-        </ul>
-            
+                  )
+             })} 
+        
+            <h1>Score: {score}</h1>
         </>
 
 
-    )
+)
 }
