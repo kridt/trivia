@@ -1,7 +1,6 @@
-import { Link } from "@reach/router";
+/* import { Link } from "@reach/router"; */
 import axios from "axios";
-import { useContext, useEffect, useState } from "react"
-var randomNumber0to9 = Math.floor(Math.random() * 10);
+import { useEffect, useState } from "react";
 
 export default function Questions(props) {
     
@@ -16,7 +15,7 @@ export default function Questions(props) {
         [setQuestion, props.id]
         ) 
         
-        var displayQuestion = document.querySelector(".theQuestion");
+        /* var displayQuestion = document.querySelector(".theQuestion"); */
         var theQuestion = question;
         
          
