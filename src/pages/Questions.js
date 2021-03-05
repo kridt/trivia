@@ -21,7 +21,7 @@ export default function Questions(props) {
         
         
         
-        var correctAnswer = theQuestion?.correct_answer;
+        //var correctAnswer = theQuestion?.correct_answer;
         var incorrectAnswers = theQuestion?.incorrect_answers;
         console.log(incorrectAnswers);
              //incorrectAnswers?.push(correctAnswer);
