@@ -12,14 +12,14 @@ export default function Result(props) {
         localStorage.setItem("currentScore", Number(score) + 100);
         
     } else {
-        var theResult = "Incorrect"
+        theResult = "Incorrect"
         localStorage.setItem("currentScore", 0);
     }
 
     if (theResult === "Incorrect") {
         var rightAnswer = ` The right answer was ${answer}`;
     } else {
-        var rightAnswer = "";
+        rightAnswer = "";
     }
 
 
