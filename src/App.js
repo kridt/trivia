@@ -10,9 +10,8 @@ function App() {
       <Router>
 
       <WelcomePage path="/" />
-      <Category path="/Category.js" />
-      <Questions path="/Questions" />
-      <Questions path="/Questions/:id" />
+      <Category path="/category" />
+      <Questions path="/questions/:id" />
       </Router>
     </div>
   );

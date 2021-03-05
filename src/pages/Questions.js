@@ -16,17 +16,17 @@ export default function Questions(props) {
         ) 
         
         /* var displayQuestion = document.querySelector(".theQuestion"); */
-        var theQuestion = question;
+        var theQuestion = question[0];
         
-         
-        console.log(theQuestion);
-         
-         
-             /* var correctAnswer = theQuestion?.correct_answer;
-             var incorrectAnswers = theQuestion?.incorrect_answers;
-             incorrectAnswers?.push(correctAnswer);
-             var options = incorrectAnswers;
-              */
+        
+        
+        
+        var correctAnswer = theQuestion?.correct_answer;
+        var incorrectAnswers = theQuestion?.incorrect_answers;
+        console.log(incorrectAnswers);
+             //incorrectAnswers?.push(correctAnswer);
+             //var options = incorrectAnswers;
+              
                 
     return(
         <>

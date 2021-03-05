@@ -18,7 +18,7 @@ export default function Category() {
             [setCategories]
             );
             
-   
+   console.log(categories);
 
     return(
         <>
@@ -28,7 +28,7 @@ export default function Category() {
         {categories.trivia_categories?.map(function (category) {
 
             return(
-                <Link key={category.id} to={"/Questions/" + category.id}>
+                <Link key={category.id} to={"/questions/" + category.id}>
                     <li key={category.id}>{category.name}</li>
                 </Link>
             )
