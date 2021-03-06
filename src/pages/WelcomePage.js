@@ -14,10 +14,12 @@ console.log(highscore);
 
 export default function WelcomePage() {
     
-
+    var difficulties = ["Easay", "medium", "hard"]
 
     var score = localStorage.getItem("currentScore");
 
+
+   
     
     return(
         <>
@@ -29,7 +31,16 @@ export default function WelcomePage() {
         <h1>Your current score: {score}</h1>
         <h1>highscore: {highscore}</h1>
         <button /* onClick={resetHighscore()} */>Reset highscore</button>
-
+        <div>
+        <h1>Select difficulty</h1>
+        <select className="difficulty">
+            {difficulties.map(function(result) {
+                return(
+                    <option key={result}>{result}</option>
+                )
+            })}
+        </select>
+        </div>
         </>
     )
 } 
