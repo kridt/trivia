@@ -2,24 +2,32 @@ import {Link} from "@reach/router";
 var currentScore = localStorage.getItem("currentScore")
 localStorage.setItem("currentScore", currentScore)
 
-
 var highscore = localStorage.getItem("highscore")
 
-console.log(highscore);
+
 
 /* function resetHighscore() {
     localStorage.setItem("highscore", 0);
 }
- */
+*/
 
 export default function WelcomePage() {
     
-    var difficulties = ["Easay", "medium", "hard"]
-
+    var difficulties = ["easy", "medium", "hard"]
+    
     var score = localStorage.getItem("currentScore");
-
-
-   
+    
+    
+    var difficultySelect = document.querySelector(".difficulty");
+    
+    difficultySelect?.addEventListener("change", function(e){
+       
+        localStorage.setItem("difficulty", difficultySelect?.value);
+        e.preventDefault();
+        console.log(difficultySelect?.value);
+        
+    })
+    
     
     return(
         <>
@@ -34,9 +42,10 @@ export default function WelcomePage() {
         <div>
         <h1>Select difficulty</h1>
         <select className="difficulty">
+            <option>Select</option>
             {difficulties.map(function(result) {
                 return(
-                    <option key={result}>{result}</option>
+                    <option className="difficultyOption" key={result}>{result}</option>
                 )
             })}
         </select>

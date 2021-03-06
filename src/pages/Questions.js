@@ -7,12 +7,13 @@ export default function Questions(props) {
 
     var score = localStorage.getItem("currentScore");
     var [question, setQuestion] = useState({});
-    
+    var difficulty = localStorage.getItem("difficulty")
     localStorage.setItem("categoryId", props.id)
     
     useEffect(
         function () {
-            axios.get(`https://opentdb.com/api.php?amount=1&category=${props.id}&type=multiple`)
+            console.log(difficulty);
+            axios.get(`https://opentdb.com/api.php?amount=1&category=${props.id}&type=multiple&difficulty=${difficulty}`)
             .then(response => setQuestion(response.data.results));
             
         },
