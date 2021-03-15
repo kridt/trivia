@@ -2,6 +2,7 @@
 import { Link } from "@reach/router";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./Questions.css";
 
 export default function Questions(props) {
 
@@ -10,6 +11,10 @@ export default function Questions(props) {
     var difficulty = localStorage.getItem("difficulty")
     localStorage.setItem("categoryId", props.id)
     
+    if(difficulty == undefined) {
+        difficulty = "esay";
+    }
+    console.log(difficulty);
     useEffect(
         function () {
             console.log(difficulty);
@@ -51,7 +56,7 @@ export default function Questions(props) {
         
               {options?.map(function(result) {
                   return(
-                      <Link style={{display: "block"}} to={"/result/" + result} key={result}>{result}</Link>
+                      <Link className="question" style={{display: "block"}} to={"/result/" + result} key={result}>{result}</Link>
 
                   )
              })} 

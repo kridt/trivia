@@ -1,7 +1,5 @@
 import {Link} from "@reach/router";
 var currentScore = localStorage.getItem("currentScore")
-localStorage.setItem("currentScore", currentScore)
-
 var highscore = localStorage.getItem("highscore")
 
 
@@ -12,6 +10,9 @@ var highscore = localStorage.getItem("highscore")
 */
 
 export default function WelcomePage() {
+    if(currentScore = NaN) {
+        localStorage.setItem("currentScore", 0)
+    } 
     
     var difficulties = ["easy", "medium", "hard"]
     
@@ -21,11 +22,11 @@ export default function WelcomePage() {
     var difficultySelect = document.querySelector(".difficulty");
     
     difficultySelect?.addEventListener("change", function(e){
+        e.preventDefault();
        
         localStorage.setItem("difficulty", difficultySelect?.value);
-        e.preventDefault();
-        console.log(difficultySelect?.value);
         
+        console.log(difficultySelect?.value);
     })
     
     
